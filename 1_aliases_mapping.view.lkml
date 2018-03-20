@@ -1,8 +1,7 @@
 view: aliases_mapping {
   derived_table: {
     sql_trigger_value: select current_date ;;
-    sortkeys: ["looker_visitor_id", "alias"]
-    distribution: "alias"
+    indexes: ["looker_visitor_id", "alias"]
     sql: with
       all_mappings as (
         select anonymous_id
