@@ -6,8 +6,8 @@ view: page_facts {
       , e.looker_visitor_id
       , e.received_at
       , CASE
-          WHEN DATEDIFF(seconds, e.received_at, LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)) > 30*60 THEN NULL
-          ELSE DATEDIFF(seconds, e.received_at, LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)) END AS lead_idle_time_condition
+          WHEN DATE_part('seconds', e.received_at- LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)) > 30*60 THEN NULL
+          ELSE DATE_part('seconds', e.received_at- LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)) END AS lead_idle_time_condition
 FROM ${mapped_events.SQL_TABLE_NAME} AS e
  ;;
   }

@@ -3,7 +3,7 @@
 view: track_facts {
   derived_table: {
     sql_trigger_value: select count(*) from ${sessions_trk.SQL_TABLE_NAME} ;;
-    indexes: ["event_id","looker_visitor_id"]
+    indexes: ["event_id","looker_visitor_id","uuid"]
     sql: select t.anonymous_id
           , t.received_at
           , t.event_id

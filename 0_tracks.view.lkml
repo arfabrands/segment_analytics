@@ -48,7 +48,7 @@ view: tracks {
 
   dimension: weeks_since_first_visit {
     type: number
-    sql: FLOOR(DATEDIFF(day,${user_session_facts.first_date}, ${received_date})/7) ;;
+    sql: FLOOR(DATE_part('minute',${user_session_facts.first_date}- ${received_date})/7) ;;
   }
 
   dimension: is_new_user {

@@ -49,7 +49,7 @@ where (idle_time_minutes > 30 or idle_time_minutes is null)
 
   dimension: session_duration_minutes {
     type: number
-    sql: DATEDIFF(minutes, ${start_time}::timestamp, ${session_pg_trk_facts.end_time}::timestamp) ;;
+    sql: DATE_part('minutes', ${start_time}::timestamp- ${session_pg_trk_facts.end_time}::timestamp) ;;
   }
 
   measure: count {

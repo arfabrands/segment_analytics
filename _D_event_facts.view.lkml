@@ -6,7 +6,7 @@ view: event_facts {
     sql: select t.received_at
         , t.anonymous_id
         , t.event_id
-        , t.uuid_ts as uuid
+        , t.uuid_ts
         , t.event_source
         , s.session_id
         , t.looker_visitor_id
@@ -30,7 +30,7 @@ view: event_facts {
 
   dimension: uuid {
     type: string
-    sql: ${TABLE}.uuid ;;
+    sql: ${TABLE}.uuid_ts ;;
   }
 
   dimension: session_id {

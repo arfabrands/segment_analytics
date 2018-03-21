@@ -70,7 +70,7 @@ view: session_pg_trk_facts {
 
   dimension: session_duration_minutes {
     type: number
-    sql: datediff(minutes, ${sessions_pg_trk.start_raw}, ${end_raw}) ;;
+    sql: date_part('minutes', ${sessions_pg_trk.start_raw}- ${end_raw}) ;;
   }
 
   dimension: session_duration_minutes_tiered {

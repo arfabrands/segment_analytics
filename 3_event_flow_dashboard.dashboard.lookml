@@ -9,7 +9,7 @@
   - name: date
     title: "Date"
     type: date_filter
-    default_value: 2018
+    default_value: 3 months
 
   - name: event
     title: 'First Event'
