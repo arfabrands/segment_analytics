@@ -81,7 +81,7 @@ The next step ensures we only have one parent to child relationship, but selecti
 
 ``` 
 select distinct alias
-               , first_value(next_alias ignore nulls) over(partition by alias order by realiased_at rows between unbounded preceding and unbounded following) as next_alias
+               , first_value(next_alias ) over(partition by alias order by realiased_at rows between unbounded preceding and unbounded following) as next_alias
              from all_realiases
 ```
 

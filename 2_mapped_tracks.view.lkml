@@ -5,9 +5,9 @@ view: mapped_tracks {
     indexes: ["event_id","looker_visitor_id"]
     sql_trigger_value: select current_date ;;
     sql: select *
-        , datediff(minutes, lag(received_at) over(partition by looker_visitor_id order by received_at), received_at) as idle_time_minutes
+         , date_part('minute', lag(received_at) over(partition by looker_visitor_id order by received_at)- received_at) as idle_time_minutes
         from (
-          select CONCAT(t.received_at, t.uuid) as event_id
+          select CONCAT(t.received_at, t.uuid_ts) as event_id
           , t.anonymous_id
           , a2v.looker_visitor_id
           , t.received_at
@@ -16,7 +16,8 @@ view: mapped_tracks {
           from goodee_shopify.tracks as t
           inner join ${aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
-        )
+          where t.received_at >= now() - interval '2 months'
+        ) tt
        ;;
   }
 
@@ -25,7 +26,7 @@ view: mapped_tracks {
   }
 
   dimension: uuid {
-    sql: ${TABLE}.uuid ;;
+    sql: ${TABLE}.uuid_ts ;;
   }
 
   dimension: event_id {

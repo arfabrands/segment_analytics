@@ -10,6 +10,7 @@ view: page_aliases_mapping {
         , user_id
         , received_at as received_at
         from goodee_shopify.tracks
+        where received_at >= now() - interval '2 months'
 
         union
 
@@ -17,6 +18,7 @@ view: page_aliases_mapping {
           , null
           , received_at
         from goodee_shopify.tracks
+        where received_at >= now() - interval '2 months'
 
         union
 
@@ -24,6 +26,7 @@ view: page_aliases_mapping {
           , user_id
           , received_at
         from goodee_shopify.pages
+        where received_at >= now() - interval '2 months'
 
         union
 
@@ -31,11 +34,12 @@ view: page_aliases_mapping {
         , null
         , received_at
         from goodee_shopify.pages
+        where received_at >= now() - interval '2 months'
       )
 
       select
                   distinct anonymous_id as alias
-                  , coalesce(first_value(user_id ignore nulls)
+                  , coalesce(first_value(user_id )
                   over(
                     partition by anonymous_id
                     order by received_at
@@ -116,7 +120,7 @@ view: page_aliases_mapping {
 #             -- Only keep the oldest non-null parent for each child
 #             realiases as (
 #               select distinct alias
-#                 , first_value(next_alias ignore nulls) over(partition by alias order by realiased_at rows between unbounded preceding and unbounded following) as next_alias
+#                 , first_value(next_alias ) over(partition by alias order by realiased_at rows between unbounded preceding and unbounded following) as next_alias
 #               from all_mappings
 #             )
 #

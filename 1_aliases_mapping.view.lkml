@@ -8,6 +8,7 @@ view: aliases_mapping {
         , user_id
         , received_at as received_at
         from goodee_shopify.tracks
+        where received_at >= now() - interval '2 months'
 
         union
 
@@ -15,13 +16,14 @@ view: aliases_mapping {
           , null
           , received_at
         from goodee_shopify.tracks
+        where received_at >= now() - interval '2 months'
       )
 
       select
         distinct anonymous_id as alias
-        , first_value(user_id ignore nulls) OVER ()
+        , first_value(user_id) OVER ()
 
-        , coalesce(first_value(user_id ignore nulls)
+        , coalesce(first_value(user_id)
         over(
           partition by anonymous_id
           order by received_at
