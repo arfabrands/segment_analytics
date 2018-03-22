@@ -48,7 +48,7 @@ view: tracks {
 
   dimension: weeks_since_first_visit {
     type: number
-    sql: FLOOR(DATE_part('minute',${user_session_facts.first_date}- ${received_date})/7) ;;
+    sql: FLOOR(date_part('minute',${received_date}-${user_session_facts.first_date})/7) ;;
   }
 
   dimension: is_new_user {
@@ -68,35 +68,12 @@ view: tracks {
 
   filter: event1 {
     suggestions: [
-      "added_item",
-      "app_became_active",
-      "app_entered_background",
-      "app_entered_foreground",
-      "app_launched",
-      "app_resigned_active",
-      "app_loaded",
-      "asked_for_sizes",
+      "viewed_product",
       "completed_order",
-      "created_a_project",
-      "failed_auth_validation",
       "login",
       "made_purchase",
-      "payment_available",
-      "payment_failed",
-      "payment_form_shown",
-      "payment_form_submitted",
       "removed_item",
-      "saved_sizes",
-      "shipping_available",
-      "shipping_form_failed",
-      "shipping_form_shown",
-      "shipping_form_submitted",
-      "signup",
-      "submitted_order",
-      "switched_auth_forms",
-      "tapped_shipit",
-      "view_buy_page",
-      "viewed_auth_page"
+      "signup"
     ]
   }
 
@@ -116,35 +93,12 @@ view: tracks {
 
   filter: event2 {
     suggestions: [
-      "added_item",
-      "app_became_active",
-      "app_entered_background",
-      "app_entered_foreground",
-      "app_launched",
-      "app_resigned_active",
-      "asked_for_sizes",
+      "viewed_product",
       "completed_order",
-      "created_a_project",
-      "failed_auth_validation",
       "login",
       "made_purchase",
-      "payment_available",
-      "payment_failed",
-      "payment_form_shown",
-      "payment_form_submitted",
       "removed_item",
-      "saved_sizes",
-      "shipping_available",
-      "shipping_form_failed",
-      "shipping_form_shown",
-      "shipping_form_submitted",
-      "signup",
-      "submitted_order",
-      "subscribed_to_blog",
-      "switched_auth_forms",
-      "tapped_shipit",
-      "view_buy_page",
-      "viewed_auth_page"
+      "signup"
     ]
   }
 
@@ -164,35 +118,12 @@ view: tracks {
 
   filter: event3 {
     suggestions: [
-      "added_item",
-      "app_became_active",
-      "app_entered_background",
-      "app_entered_foreground",
-      "app_launched",
-      "app_resigned_active",
-      "asked_for_sizes",
+      "viewed_product",
       "completed_order",
-      "created_a_project",
-      "failed_auth_validation",
-      "logged_in",
+      "login",
       "made_purchase",
-      "payment_available",
-      "payment_failed",
-      "payment_form_shown",
-      "payment_form_submitted",
       "removed_item",
-      "saved_sizes",
-      "shipping_available",
-      "shipping_form_failed",
-      "shipping_form_shown",
-      "shipping_form_submitted",
-      "signup",
-      "submitted_order",
-      "subscribed_to_blog",
-      "switched_auth_forms",
-      "tapped_shipit",
-      "view_buy_page",
-      "viewed_auth_page"
+      "signup"
     ]
   }
 
@@ -212,35 +143,12 @@ view: tracks {
 
   filter: event4 {
     suggestions: [
-      "added_item",
-      "app_became_active",
-      "app_entered_background",
-      "app_entered_foreground",
-      "app_launched",
-      "app_resigned_active",
-      "asked_for_sizes",
+      "viewed_product",
       "completed_order",
-      "created_a_project",
-      "failed_auth_validation",
       "login",
       "made_purchase",
-      "payment_available",
-      "payment_failed",
-      "payment_form_shown",
-      "payment_form_submitted",
       "removed_item",
-      "saved_sizes",
-      "shipping_available",
-      "shipping_form_failed",
-      "shipping_form_shown",
-      "shipping_form_submitted",
-      "signup",
-      "submitted_order",
-      "subscribed_to_blog",
-      "switched_auth_forms",
-      "tapped_shipit",
-      "view_buy_page",
-      "viewed_auth_page"
+      "signup"
     ]
   }
 
