@@ -8,7 +8,7 @@ view: aliases_mapping {
         , user_id
         , received_at as received_at
         from goodee_shopify.tracks
-        where received_at >= now() - interval '2 months'
+        where received_at >= now() - interval '3 months'
 
         union
 
@@ -16,7 +16,7 @@ view: aliases_mapping {
           , null
           , received_at
         from goodee_shopify.tracks
-        where received_at >= now() - interval '2 months'
+        where received_at >= now() - interval '3 months'
       )
 
       select

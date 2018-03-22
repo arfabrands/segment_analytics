@@ -17,7 +17,7 @@
     model: tracks
     explore: track_facts
     field: track_facts.event
-    default_value: 'login'
+    default_value: 'veiwed_product'
 
   elements:
 

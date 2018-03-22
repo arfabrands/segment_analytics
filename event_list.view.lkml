@@ -7,7 +7,7 @@ view: event_list {
     sql: SELECT
         event as event_types
       FROM goodee_shopify.tracks
-      where received_at >= now() - interval '2 months'
+      where received_at >= now() - interval '3 months'
       GROUP BY 1
        ;;
   }

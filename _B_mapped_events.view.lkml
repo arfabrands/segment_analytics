@@ -15,7 +15,7 @@ view: mapped_events {
         from goodee_shopify.tracks as t
         inner join ${page_aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
-          where received_at >= now() - interval '2 months'
+          where received_at >= now() - interval '3 months'
 
         union all
 
@@ -29,7 +29,7 @@ view: mapped_events {
         from goodee_shopify.pages as t
         inner join ${page_aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
-          where received_at >= now() - interval '2 months'
+          where received_at >= now() - interval '3 months'
       ) as e
        ;;
   }

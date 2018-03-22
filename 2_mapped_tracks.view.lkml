@@ -16,7 +16,7 @@ view: mapped_tracks {
           from goodee_shopify.tracks as t
           inner join ${aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
-          where t.received_at >= now() - interval '2 months'
+          where t.received_at >= now() - interval '3 months'
         ) tt
        ;;
   }
