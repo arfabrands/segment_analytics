@@ -3,11 +3,11 @@
 view: track_facts {
   derived_table: {
     sql_trigger_value: select count(*) from ${sessions_trk.SQL_TABLE_NAME} ;;
-    indexes: ["event_id","looker_visitor_id","uuid"]
+    indexes: ["event_id","looker_visitor_id","id"]
     sql: select t.anonymous_id
           , t.received_at
           , t.event_id
-          , t.uuid_ts
+          , t.id
           , t.event
           , s.session_id
           , t.looker_visitor_id
@@ -33,7 +33,7 @@ view: track_facts {
 
   dimension: uuid {
     hidden: yes
-    sql: ${TABLE}.uuid_ts ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: session_id {

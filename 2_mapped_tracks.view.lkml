@@ -5,9 +5,9 @@ view: mapped_tracks {
     indexes: ["event_id","looker_visitor_id"]
     sql_trigger_value: select current_date ;;
     sql: select *
-         , date_part('minute', lag(received_at) over(partition by looker_visitor_id order by received_at)- received_at) as idle_time_minutes
+         , date_part('minute',received_at- lag(received_at) over(partition by looker_visitor_id order by received_at)) as idle_time_minutes
         from (
-          select CONCAT(t.received_at, t.uuid_ts) as event_id
+          select CONCAT(t.received_at, t.id) as event_id
           , t.anonymous_id
           , a2v.looker_visitor_id
           , t.received_at
@@ -26,7 +26,7 @@ view: mapped_tracks {
   }
 
   dimension: uuid {
-    sql: ${TABLE}.uuid_ts ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: event_id {

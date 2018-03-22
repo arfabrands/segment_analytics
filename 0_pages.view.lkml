@@ -67,7 +67,7 @@ view: pages {
   dimension: uuid {
     type: number
     value_format_name: id
-    sql: ${TABLE}.uuid_ts ;;
+    sql: ${TABLE}.id ;;
   }
 
   measure: count {

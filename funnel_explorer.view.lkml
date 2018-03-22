@@ -75,7 +75,7 @@ view: funnel_explorer {
 
   dimension: minutes_in_funnel {
     type: number
-    sql: date_part('minutes',${event1_raw}-COALESCE(${event3_raw},${event2_raw})) ;;
+    sql: date_part('minutes',COALESCE(${event3_raw},${event2_raw})-${event1_raw}) ;;
   }
 
   measure: count_sessions {

@@ -14,9 +14,10 @@ explore: track_facts {
     view_label: "Events"
     type: left_outer
     relationship: one_to_one
-    sql_on: tracks.uuid_ts = track_facts.uuid_ts and
+    sql_on: tracks.id = track_facts.id and
       tracks.received_at = track_facts.received_at and
       tracks.anonymous_id = track_facts.anonymous_id
+       and tracks.received_at >= now() - interval '2 months'
        ;;
   }
 

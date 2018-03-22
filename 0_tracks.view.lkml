@@ -31,7 +31,7 @@ view: tracks {
   dimension: uuid {
     type: number
     value_format_name: id
-    sql: ${TABLE}.uuid_ts ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension: event_id {

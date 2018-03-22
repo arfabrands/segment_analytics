@@ -3,12 +3,12 @@ view: mapped_events {
     indexes: ["event_id","looker_visitor_id"]
     sql_trigger_value: select current_date ;;
     sql: select *
-        , date_part('minute', lag(received_at) over(partition by looker_visitor_id order by received_at)- received_at) as idle_time_minutes
+        , date_part('minute', received_at-lag(received_at) over(partition by looker_visitor_id order by received_at)) as idle_time_minutes
       from (
-        select CONCAT(t.received_at, t.uuid_ts) || '-t' as event_id
+        select CONCAT(t.received_at, t.id) || '-t' as event_id
           , coalesce(a2v.looker_visitor_id,a2v.alias) as looker_visitor_id
           , t.anonymous_id
-          , t.uuid_ts
+          , t.id
           , t.received_at
           , NULL as referrer
           , 'tracks' as event_source
@@ -19,10 +19,10 @@ view: mapped_events {
 
         union all
 
-        select CONCAT(t.received_at, t.uuid_ts) || '-p' as event_id
+        select CONCAT(t.received_at, t.id) || '-p' as event_id
           , coalesce(a2v.looker_visitor_id,a2v.alias)
           , t.anonymous_id
-          , t.uuid_ts
+          , t.id
           , t.received_at
           , t.referrer as referrer
           , 'pages' as event_source
@@ -47,7 +47,7 @@ view: mapped_events {
   }
 
   dimension: uuid {
-    sql: ${TABLE}.uuid_ts ;;
+    sql: ${TABLE}.id ;;
   }
 
   dimension_group: received_at {
