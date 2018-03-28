@@ -7,10 +7,10 @@ view: session_trk_facts {
     sql: SELECT s.session_id
         , MAX(map.received_at) AS ended_at
         , count(distinct map.event_id) AS num_pvs
-        , count(case when map.event = 'app_loaded' then event_id else null end) as cnt_app_loaded
-        , count(case when map.event = 'login' then event_id else null end) as cnt_login
-        , count(case when map.event = 'subscribed_to_blog' then event_id else null end) as cnt_subscribed_to_blog
-        , count(case when map.event = 'signup' then event_id else null end) as cnt_signup
+        , count(case when map.event = 'user_login' then event_id else null end) as cnt_app_loaded
+        , count(case when map.event = 'log_in' then event_id else null end) as cnt_login
+        , count(case when map.event = 'signed_up_for_newsletter' then event_id else null end) as cnt_subscribed_to_blog
+        , count(case when map.event = 'sign_up' then event_id else null end) as cnt_signup
       FROM ${sessions_trk.SQL_TABLE_NAME} AS s
       LEFT JOIN ${track_facts.SQL_TABLE_NAME} as map on map.session_id = s.session_id
       GROUP BY 1
@@ -40,6 +40,7 @@ view: session_trk_facts {
   }
 
   dimension: app_loaded {
+    label: "User Logins"
     type: yesno
     sql: ${TABLE}.cnt_app_loaded > 0 ;;
   }
@@ -50,6 +51,7 @@ view: session_trk_facts {
   }
 
   dimension: subscribed_to_blog {
+    label: "Xubscribed to NewsLetter"
     type: yesno
     sql: ${TABLE}.cnt_subscribed_to_blog > 0 ;;
   }

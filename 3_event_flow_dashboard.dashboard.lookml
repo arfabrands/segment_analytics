@@ -17,7 +17,7 @@
     model: tracks
     explore: track_facts
     field: track_facts.event
-    default_value: 'veiwed_product'
+    default_value: 'viewed_product_category'
 
   elements:
 
