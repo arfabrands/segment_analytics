@@ -7,7 +7,7 @@ view: page_facts {
       , e.received_at
       , CASE
           WHEN DATE_part('seconds', LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)- e.received_at) > 30*60 THEN NULL
-          ELSE coalesce(DATE_part('seconds', LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)- e.received_at),0) END AS lead_idle_time_condition
+          ELSE DATE_part('seconds', LEAD(e.received_at) OVER(PARTITION BY e.looker_visitor_id ORDER BY e.received_at)- e.received_at) END AS lead_idle_time_condition
 FROM ${mapped_events.SQL_TABLE_NAME} AS e
  ;;
   }
