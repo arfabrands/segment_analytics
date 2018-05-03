@@ -42,7 +42,7 @@ view: page_aliases_mapping {
                   , coalesce(first_value(user_id )
                   over(
                     partition by anonymous_id
-                    order by received_at
+                    order by case when user_id is not null then 0 else 1 end,received_at
                     rows between unbounded preceding and unbounded following),anonymous_id) as looker_visitor_id
       from all_mappings
        ;;
