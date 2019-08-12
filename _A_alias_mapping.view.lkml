@@ -10,28 +10,28 @@ view: page_aliases_mapping {
         select anonymous_id
         , user_id
         , received_at as received_at
-        from segment.tracks
+        from goodee_shopify.tracks
 
         union
 
         select user_id
           , null
           , received_at
-        from segment.tracks
+        from goodee_shopify.tracks
 
         union
 
         select anonymous_id
           , user_id
           , received_at
-        from segment.pages
+        from goodee_shopify.pages
 
         union
 
         select user_id
         , null
         , received_at
-        from segment.pages
+        from goodee_shopify.pages
       )
 
       select
