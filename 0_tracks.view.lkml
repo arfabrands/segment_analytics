@@ -1,5 +1,5 @@
 view: tracks {
-  sql_table_name: goodee_shopify.tracks ;;
+  sql_table_name: liedit_com_production.tracks ;;
 
   dimension: anonymous_id {
     type: string

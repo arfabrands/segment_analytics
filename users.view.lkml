@@ -1,5 +1,5 @@
 view: users {
-  sql_table_name: goodee_shopify.users ;;
+  sql_table_name: liedit_com_production.users ;;
 
   dimension: id {
     primary_key: yes

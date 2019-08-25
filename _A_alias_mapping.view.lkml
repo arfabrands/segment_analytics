@@ -9,7 +9,7 @@ view: page_aliases_mapping {
         select anonymous_id
         , user_id
         , received_at as received_at
-        from goodee_shopify.tracks
+        from liedit_com_production.tracks
         where received_at >= now() - interval '3 months'
 
         union
@@ -17,7 +17,7 @@ view: page_aliases_mapping {
         select user_id
           , null
           , received_at
-        from goodee_shopify.tracks
+        from liedit_com_production.tracks
         where received_at >= now() - interval '3 months'
 
         union
@@ -25,7 +25,7 @@ view: page_aliases_mapping {
         select anonymous_id
           , user_id
           , received_at
-        from goodee_shopify.pages
+        from liedit_com_production.pages
         where received_at >= now() - interval '3 months'
 
         union
@@ -33,7 +33,7 @@ view: page_aliases_mapping {
         select user_id
         , null
         , received_at
-        from goodee_shopify.pages
+        from liedit_com_production.pages
         where received_at >= now() - interval '3 months'
       )
 

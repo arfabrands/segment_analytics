@@ -1,5 +1,5 @@
 view: groups {
-  sql_table_name: goodee_shopify.groups ;;
+  sql_table_name: liedit_com_production.groups ;;
 
   dimension: group_id {
     primary_key: yes
