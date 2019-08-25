@@ -1,5 +1,5 @@
 view: tracks {
-  sql_table_name: liedit_com_production.tracks ;;
+  sql_table_name: lieudit_com_production.tracks ;;
 
   dimension: anonymous_id {
     type: string

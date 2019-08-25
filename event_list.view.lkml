@@ -6,7 +6,7 @@ view: event_list {
     indexes: ["event_types"]
     sql: SELECT
         event as event_types
-      FROM liedit_com_production.tracks
+      FROM lieudit_com_production.tracks
       where received_at >= now() - interval '3 months'
       GROUP BY 1
        ;;

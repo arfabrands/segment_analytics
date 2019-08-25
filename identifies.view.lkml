@@ -1,5 +1,5 @@
 view: identifies {
-  sql_table_name: liedit_com_production.identifies ;;
+  sql_table_name: lieudit_com_production.identifies ;;
 
   dimension: anonymous_id {
     type: string
