@@ -27,7 +27,7 @@ view: track_facts {
   }
 
   dimension: event {
-    #     hidden: true
+    hidden: yes
     sql: ${TABLE}.event ;;
   }
 
