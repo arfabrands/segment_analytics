@@ -12,7 +12,7 @@ view: mapped_tracks {
           , a2v.looker_visitor_id
           , t.received_at
           , t.event as event
-          , t.uuid
+          , t.id
           from goodee_shopify.tracks as t
           inner join ${aliases_mapping.SQL_TABLE_NAME} as a2v
           on a2v.alias = coalesce(t.user_id, t.anonymous_id)
