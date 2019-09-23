@@ -195,30 +195,31 @@
     total: false
     width: 4
 
-  - name: add_a_unique_name_629
-    title: Conversion Funnel
-    type: looker_column
-    model: tracks
-    explore: sessions_trk
-    measures: [session_trk_facts.count_app_loaded, session_trk_facts.count_login,
-      session_trk_facts.count_subscribed_to_blog, session_trk_facts.count_signup]
-    listen:
-      date: sessions_trk.start_date
-    sorts: [session_trk_facts.count_view_buy_page desc]
-    limit: 500
-    colors: ['#fcd15c', '#485963','#446c80', '#00b2d8', orange]
-    total: false
-    y_axis_gridlines: true
-    show_y_axis_labels: true
-    show_y_axis_ticks: true
-    show_dropoff: true
-    y_axis_combined: true
-    stacking: ''
-    show_value_labels: false
-    x_axis_gridlines: false
-    show_view_names: true
-    show_x_axis_label: true
-    show_x_axis_ticks: true
-    x_axis_scale: auto
-    show_null_labels: false
-    width: 12
+# Removing until funnel definitions are completed
+#   - name: add_a_unique_name_629
+#     title: Conversion Funnel
+#     type: looker_column
+#     model: tracks
+#     explore: sessions_trk
+#     measures: [session_trk_facts.count_app_loaded, session_trk_facts.count_login,
+#       session_trk_facts.count_subscribed_to_blog, session_trk_facts.count_signup]
+#     listen:
+#       date: sessions_trk.start_date
+#     sorts: [session_trk_facts.count_view_buy_page desc]
+#     limit: 500
+#     colors: ['#fcd15c', '#485963','#446c80', '#00b2d8', orange]
+#     total: false
+#     y_axis_gridlines: true
+#     show_y_axis_labels: true
+#     show_y_axis_ticks: true
+#     show_dropoff: true
+#     y_axis_combined: true
+#     stacking: ''
+#     show_value_labels: false
+#     x_axis_gridlines: false
+#     show_view_names: true
+#     show_x_axis_label: true
+#     show_x_axis_ticks: true
+#     x_axis_scale: auto
+#     show_null_labels: false
+#     width: 12
