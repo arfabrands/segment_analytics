@@ -34,7 +34,7 @@ view: pages {
 
   dimension: name {
     type: string
-    sql: ${TABLE}.name ;;
+    sql: ${TABLE}.title ;;
   }
 
   dimension_group: received {
