@@ -68,7 +68,7 @@ view: tracks {
 
   filter: event1 {
     suggestions: [
-      "viewed_product",
+      "product_viewed",
       "completed_order",
       "login",
       "made_purchase",
@@ -93,7 +93,7 @@ view: tracks {
 
   filter: event2 {
     suggestions: [
-      "viewed_product",
+      "product_viewed",
       "completed_order",
       "login",
       "made_purchase",
@@ -118,7 +118,7 @@ view: tracks {
 
   filter: event3 {
     suggestions: [
-      "viewed_product",
+      "product_viewed",
       "completed_order",
       "login",
       "made_purchase",
@@ -143,7 +143,7 @@ view: tracks {
 
   filter: event4 {
     suggestions: [
-      "viewed_product",
+      "product_viewed",
       "completed_order",
       "login",
       "made_purchase",
